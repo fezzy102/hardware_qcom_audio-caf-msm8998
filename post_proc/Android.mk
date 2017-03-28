@@ -51,6 +51,12 @@ LOCAL_C_INCLUDES := \
         $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include \
         $(call include-path-for, audio-effects)
 
+LOCAL_C_INCLUDES	+= $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/techpack/audio/include
+LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/vendor/qcom/opensource/audio-kernel/include
+LOCAL_ADDITIONAL_DEPENDENCIES += $(BOARD_VENDOR_KERNEL_MODULES)
+
+LOCAL_HEADER_LIBRARIES += libhardware_headers
+LOCAL_HEADER_LIBRARIES += libsystem_headers
 include $(BUILD_SHARED_LIBRARY)
 
 
@@ -112,6 +118,13 @@ LOCAL_C_INCLUDES := \
         hardware/qcom/audio/hal/audio_extn \
         external/tinycompress/include
 
+LOCAL_C_INCLUDES	+= $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/techpack/audio/include
+LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/vendor/qcom/opensource/audio-kernel/include
+LOCAL_ADDITIONAL_DEPENDENCIES += $(BOARD_VENDOR_KERNEL_MODULES)
+LOCAL_ADDITIONAL_DEPENDENCIES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
+
+LOCAL_HEADER_LIBRARIES += libhardware_headers
+LOCAL_HEADER_LIBRARIES += libsystem_headers
 include $(BUILD_SHARED_LIBRARY)
 
 endif
